@@ -1,2 +1,1 @@
-# js_ropa
-Proyecto sobre la tienda de ropa
+# Pagina web para la venta de ropa
