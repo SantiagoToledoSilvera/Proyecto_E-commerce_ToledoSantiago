@@ -29,7 +29,7 @@
         const password = document.getElementById("password").value;
 
         const nuevaCuenta = {
-            name: name,
+            name: nombre,
             email: email,
             password: password
         };
@@ -40,8 +40,9 @@
             JSON.stringify(cuentas)
         );
         console.log(cuentas);
+        alert("Cuenta creada con exito")
+        window.history.back();
     });
-
     </script>
 
 </body>
