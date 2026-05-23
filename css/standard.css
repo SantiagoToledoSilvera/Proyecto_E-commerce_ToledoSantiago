@@ -1,0 +1,13 @@
+:root {
+    --background: black;
+    --radius-xl: 20px;
+    --text: #c9b570;
+    --fz-tx: 15px;
+    --fz-tl: 24px;
+}
+
+body {
+    background-color: var(--background);
+    font-size: var(--fz-tx);
+    color: var(--text);
+}

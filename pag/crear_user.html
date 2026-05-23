@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creador de usuario</title>
+    <link rel="stylesheet" href="/css/standard.css">
+</head>
+<body>
+
+    <h1>Crear una cuenta</h1>
+    <hr>
+    <input type="text" id="name" placeholder="Ingrese el nombre de usuario">
+    <br><br>
+    <input type="text" id="email" placeholder="Ingrese el email a registrar">
+    <br><br>
+    <input type="password" id="password" placeholder="Ingrese la contraseña">
+    <br><br>
+    <button id="registrar">Registrarse</button>
+
+    <script>
+
+    const cuentas = JSON.parse(localStorage.getItem("cuentas")) || [];
+    const boton = document.getElementById("registrar");
+
+    boton.addEventListener("click", function() {
+
+        const nombre = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+
+        const nuevaCuenta = {
+            user: nombre,
+            email: email,
+            password: password,
+            rol: "user"
+        };
+        cuentas.push(nuevaCuenta);
+
+        localStorage.setItem(
+            "cuentas",
+            JSON.stringify(cuentas)
+        );
+        console.log(cuentas);
+        alert("Cuenta creada con exito")
+        window.location.href = "/index.html";
+    });
+    </script>
+</body>
+</html>
