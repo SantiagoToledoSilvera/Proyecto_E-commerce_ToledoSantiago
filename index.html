@@ -10,7 +10,7 @@
     <h1>Iniciar sesión</h1>
     <hr>
     <input type="text" id="user" placeholder="Ingrese el email del usuario">
-    <br><br>
+    <br>
     <input type="password" id="password" placeholder="Ingrese la contraseña">
     <br>
     <li><a href="pag/crear_user.html">¿No tienes una cuenta? Registrate</a></li>
@@ -23,18 +23,25 @@
     const boton = document.getElementById("iniciar");
     
     boton.addEventListener("click", function() {
+
+        if(user.value === "" || password.value === ""){
+        alert("Completa todos los campos");
+        return;
+    }
         const cuentas = JSON.parse(
-            localStorage.getItem("cuentas")
-        ) || [];
+            localStorage.getItem("cuentas")) || [];
 
         const cuenta = cuentas.find(function(usuario) {
-            return 
+            return (
+                usuario.email === user.value &&
+                usuario.password === password.value
+            );
         });
 
     if(cuenta){
         if(cuenta.rol === "admin"){
             window.location.href = "pag/dashboard.html";
-        }else{
+        }else if(cuenta.rol === "user"){
             window.location.href = "pag/tienda.html";
         }
     }else{

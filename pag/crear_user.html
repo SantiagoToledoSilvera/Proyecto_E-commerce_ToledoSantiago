@@ -19,7 +19,7 @@
 
     <script>
 
-    const cuentas = [];
+    const cuentas = JSON.parse(localStorage.getItem("cuentas")) || [];
     const boton = document.getElementById("registrar");
 
     boton.addEventListener("click", function() {
@@ -29,7 +29,7 @@
         const password = document.getElementById("password").value;
 
         const nuevaCuenta = {
-            name: nombre,
+            user: nombre,
             email: email,
             password: password,
             rol: "user"
