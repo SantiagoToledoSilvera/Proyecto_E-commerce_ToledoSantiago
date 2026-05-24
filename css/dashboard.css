@@ -5,6 +5,7 @@
     --fz-tx: 15px;
     --fz-tl: 24px;
     --font: Georgia, serif;
+    -glass: rgba(255, 255, 255, 0.1);
 }
 
 * {
@@ -59,6 +60,7 @@ a {
     bottom: 0;
     left: 0;
     width: 150px;
+    filter: drop-shadow(0 0 10px gold);
 }
 
 .corner_b {
@@ -66,6 +68,7 @@ a {
     bottom: 0;
     right: 0;
     width: 150px;
+    filter: drop-shadow(0 0 10px gold);
 }
 
 .botline {
@@ -74,4 +77,5 @@ a {
     width: 200px;
     left: 50%;
     transform: translateX(-50%);
+    filter: drop-shadow(0 0 10px gold);
 }
