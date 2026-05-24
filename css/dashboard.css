@@ -52,6 +52,7 @@ a {
 .option a:hover {
     background-color: #d4af37;
     color: var(--background);
+    cursor: pointer;
     transform: translateX(5px);
 }
 
