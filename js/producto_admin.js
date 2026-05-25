@@ -1,34 +1,50 @@
 const boton = document.getElementById("agregar");
 const contenedor = document.querySelector(".productos");
 const productos = JSON.parse(localStorage.getItem("productos")) || [];
-
-function agregarEventos(fila) {
-    const btnEliminar = fila.querySelector(".eliminar");
+function agregarEventos(card) {
+    const btnEliminar = card.querySelector(".eliminar");
     btnEliminar.addEventListener("click", function() {
-        fila.remove();
+        card.remove();
     });
-
-    const btnEditar = fila.querySelector(".editar");
-    btnEditar.addEventListener("click", function() {
-        const nuevoNombre = prompt(
-            "Editar categoría:",
-            fila.children[0].textContent
-        );
-        const nuevaDesc = prompt(
-            "Editar descripción:",
-            fila.children[1].textContent
-        );
-        fila.children[0].textContent = nuevoNombre;
-        fila.children[1].textContent = nuevaDesc;
-    });
+    const btnEditar = card.querySelector(".editar");
+btnEditar.addEventListener("click", function() {
+    const nuevoNombre = prompt(
+        "Editar nombre:",
+        card.children[1].textContent
+    );
+    const nuevaCategoria = prompt(
+        "Editar categoría:",
+        card.children[4].textContent
+    );
+    const nuevoPrecio = prompt(
+        "Editar precio:",
+        card.children[2].textContent.replace("$", "")
+    );
+    const nuevaImagen = prompt(
+        "Editar imagen:",
+        card.children[0].src
+    );
+    const nuevaDescripcion = prompt(
+        "Editar descripción:",
+        card.children[3].textContent
+    );
+    card.children[0].src = nuevaImagen;
+    card.children[1].textContent = nuevoNombre;
+    card.children[2].textContent =
+    `S/. ${nuevoPrecio}`;
+    card.children[3].textContent =
+    nuevaDescripcion;
+    card.children[4].textContent =
+    nuevaCategoria;
+});
 }
-categ.forEach(function(productos) {
+productos.forEach(function(producto) {
     const card = document.createElement("div");
     card.classList.add("card");
     card.innerHTML = `
         <img src="${producto.imagen}">
         <h2>${producto.nombre}</h2>
-        <h3>S/. ${producto.precio}</h3>
+        <h3>$${producto.precio}</h3>
         <p>${producto.descripcion}</p>
         <small>${producto.categoria}</small>
         <div class="acciones">
@@ -46,51 +62,62 @@ categ.forEach(function(productos) {
 
 boton.addEventListener("click", function() {
     const nombre = document.getElementById("nombre").value;
-    const desc = document.getElementById("desc").value;
+    const categoria = document.getElementById("categoria").value;
+    const precio = document.getElementById("precio").value;
+    const imagen = document.getElementById("imagen").value;
+    const descripcion = document.getElementById("descripcion").value;
 
-    if(nombre === "" || desc ===""){
-        alert("No se ingresó información");
+    if(
+        nombre === "" ||
+        categoria ==="" ||
+        precio === "" ||
+        imagen === "" ||
+        descripcion === ""
+        ){
+        alert("Complete todos los campos.");
         return;
     }
 
-    const nuevaCateg = {
-            cat: nombre,
-            des: desc
+    const nuevoProd = {
+            nombre: nombre,
+            categoria: categoria,
+            precio: precio,
+            imagen: imagen,
+            descripcion: descripcion
         };
 
-    categ.push(nuevaCateg);
+    productos.push(nuevoProd);
 
     localStorage.setItem(
-            "categ",
-            JSON.stringify(categ)
+            "productos",
+            JSON.stringify(productos)
         );
-    const fila = document.createElement("tr");
+    const card = document.createElement("div");
+    card.classList.add("card");
 
-    fila.innerHTML = `
-    <td>${nombre}</td>
-    <td>${desc}</td>
-    <td>
-        <button class="editar">Editar</button>
-        <button class="eliminar">Eliminar</button>
-    </td>
+    card.innerHTML = `
+        <img src="${imagen}">
+        <h2>${nombre}</h2>
+        <h3>$${precio}</h3>
+        <p>${descripcion}</p>
+        <small>${categoria}</small>
+        <div class="acciones">
+            <button class="editar">
+                Editar
+            </button>
+            <button class="eliminar">
+                Eliminar
+            </button>
+        </div>
     `;
-    tbody.appendChild(fila);
-    agregarEventos(fila);
+    contenedor.appendChild(card);
+    agregarEventos(card);
 
-    const btnEliminar = fila.querySelector(".eliminar");
-    btnEliminar.addEventListener("click", function() {
-        fila.remove();
-            });
+    document.getElementById("nombre").value = "";
+    document.getElementById("categoria").value = "";
+    document.getElementById("precio").value = "";
+    document.getElementById("imagen").value = "";
+    document.getElementById("descripcion").value = "";
 
-    const btnEditar = fila.querySelector(".editar");
-    btnEditar.addEventListener("click", function() {
-        const nuevoNombre = prompt("Editar categoría:", nombre);
-        const nuevaDesc = prompt("Editar descripción:", desc);
-        fila.children[0].textContent = nuevoNombre;
-        fila.children[1].textContent = nuevaDesc;
-    });
-
-    document.getElementById("nombre").value="";
-    document.getElementById("desc").value="";
-    alert("Categoria agregada exitosamente.")
+    alert("Producto agregado exitosamente");
 });
