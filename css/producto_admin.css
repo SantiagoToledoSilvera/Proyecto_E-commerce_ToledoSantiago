@@ -1,0 +1,33 @@
+:root {
+    --background: black;
+    --radius-xl: 20px;
+    --text: #c9b570;
+    --fz-tx: 15px;
+    --fz-tl: 24px;
+    --font: Georgia, serif;
+    -glass: rgba(255, 255, 255, 0.1);
+}
+
+.productos{
+    display: grid;
+    grid-template-columns:
+    repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    padding: 30px;
+}
+
+.card{
+    background: #111;
+    border: 1px solid var(--text);
+    border-radius: 20px;
+    padding: 20px;
+    color: white;
+    text-align: center;
+}
+
+.card img{
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 15px;
+}
