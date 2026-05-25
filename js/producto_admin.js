@@ -1,10 +1,23 @@
 const boton = document.getElementById("agregar");
 const contenedor = document.querySelector(".productos");
 const productos = JSON.parse(localStorage.getItem("productos")) || [];
+
 function agregarEventos(card) {
     const btnEliminar = card.querySelector(".eliminar");
     btnEliminar.addEventListener("click", function() {
-        card.remove();
+    const nombreProducto =
+    card.children[1].textContent;
+    const nuevoProd =
+    productos.filter(function(producto){
+        return producto.nombre !== nombreProducto;
+    });
+    productos.length = 0;
+    productos.push(...nuevoProd);
+    localStorage.setItem(
+        "productos",
+        JSON.stringify(nuevoProd)
+    );
+    card.remove();
     });
     const btnEditar = card.querySelector(".editar");
 btnEditar.addEventListener("click", function() {
@@ -31,7 +44,7 @@ btnEditar.addEventListener("click", function() {
     card.children[0].src = nuevaImagen;
     card.children[1].textContent = nuevoNombre;
     card.children[2].textContent =
-    `S/. ${nuevoPrecio}`;
+    `$${nuevoPrecio}`;
     card.children[3].textContent =
     nuevaDescripcion;
     card.children[4].textContent =
@@ -77,7 +90,6 @@ boton.addEventListener("click", function() {
         alert("Complete todos los campos.");
         return;
     }
-
     const nuevoProd = {
             nombre: nombre,
             categoria: categoria,
@@ -85,7 +97,6 @@ boton.addEventListener("click", function() {
             imagen: imagen,
             descripcion: descripcion
         };
-
     productos.push(nuevoProd);
 
     localStorage.setItem(

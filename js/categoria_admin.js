@@ -5,9 +5,18 @@ const categ = JSON.parse(localStorage.getItem("categ")) || [];
 function agregarEventos(fila) {
     const btnEliminar = fila.querySelector(".eliminar");
     btnEliminar.addEventListener("click", function() {
-        fila.remove();
+    const nombreCategoria =
+    fila.children[0].textContent;
+    const nuevaLista =
+    categ.filter(function(categoria){
+        return categoria.cat !== nombreCategoria;
     });
-
+    localStorage.setItem(
+        "categ",
+        JSON.stringify(nuevaLista)
+    );
+    fila.remove();
+});
     const btnEditar = fila.querySelector(".editar");
     btnEditar.addEventListener("click", function() {
         const nuevoNombre = prompt(
@@ -45,20 +54,16 @@ boton.addEventListener("click", function() {
         alert("No se ingresó información");
         return;
     }
-
     const nuevaCateg = {
             cat: nombre,
             des: desc
         };
-
     categ.push(nuevaCateg);
-
     localStorage.setItem(
             "categ",
             JSON.stringify(categ)
         );
     const fila = document.createElement("tr");
-
     fila.innerHTML = `
     <td>${nombre}</td>
     <td>${desc}</td>
@@ -69,19 +74,6 @@ boton.addEventListener("click", function() {
     `;
     tbody.appendChild(fila);
     agregarEventos(fila);
-
-    const btnEliminar = fila.querySelector(".eliminar");
-    btnEliminar.addEventListener("click", function() {
-        fila.remove();
-            });
-
-    const btnEditar = fila.querySelector(".editar");
-    btnEditar.addEventListener("click", function() {
-        const nuevoNombre = prompt("Editar categoría:", nombre);
-        const nuevaDesc = prompt("Editar descripción:", desc);
-        fila.children[0].textContent = nuevoNombre;
-        fila.children[1].textContent = nuevaDesc;
-    });
 
     document.getElementById("nombre").value="";
     document.getElementById("desc").value="";
