@@ -1,0 +1,21 @@
+:root {
+    --background: black;
+    --radius-xl: 20px;
+    --text: #c9b570;
+    --fz-tx: 15px;
+    --fz-tl: 24px;
+    --font: Georgia, serif;
+    -glass: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    gap: 20px;
+}
+
+body {
+    background: var(--background);
+    font-family: var(--font);
+}
