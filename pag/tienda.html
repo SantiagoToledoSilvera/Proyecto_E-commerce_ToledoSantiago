@@ -4,10 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>tienda</title>
+    <link rel="stylesheet" href="/css/standard.css">
+    <link rel="stylesheet" href="/css/tienda.css">
 </head>
 <body>
 
-    <p>tienda</p>
-    
+    <div class="hero">
+    <h1>Luxury Collection</h1>
+    <p>
+        Moda elegante y minimalista
+    </p>
+</div>
+<div class="productos">
+</div>
+<button id="abrirCarrito">
+    🛒 Carrito
+</button>
+<div class="modal" id="modalCarrito">
+    <div class="contenidoModal">
+        <h2>Carrito</h2>
+        <div id="itemsCarrito"></div>
+        <h3 id="total"></h3>
+        <button id="comprar">
+            Comprar
+        </button>
+        <button id="cerrarCarrito">
+            X
+        </button>
+    </div>
+</div>
+
+<script src="/js/tienda.js"></script>
 </body>
 </html>
