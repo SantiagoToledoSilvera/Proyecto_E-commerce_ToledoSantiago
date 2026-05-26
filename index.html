@@ -5,51 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio de sesion</title>
     <link rel="stylesheet" href="css/standard.css">
+    <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-
-    <h1>Iniciar sesión</h1>
-    <hr>
-    <input type="text" id="user" placeholder="Ingrese el email del usuario">
-    <br>
-    <input type="password" id="password" placeholder="Ingrese la contraseña">
-    <br>
-    <li><a href="pag/crear_user.html">¿No tienes una cuenta? Registrate</a></li>
-    <button id="iniciar">Iniciar</button>
-
-    <script>
-
-    const user = document.getElementById("user");
-    const password = document.getElementById("password");
-    const boton = document.getElementById("iniciar");
-    
-    boton.addEventListener("click", function() {
-
-        if(user.value === "" || password.value === ""){
-        alert("Completa todos los campos");
-        return;
-    }
-        const cuentas = JSON.parse(
-            localStorage.getItem("cuentas")) || [];
-
-        const cuenta = cuentas.find(function(usuario) {
-            return (
-                usuario.email === user.value &&
-                usuario.password === password.value
-            );
-        });
-
-    if(cuenta){
-        if(cuenta.rol === "admin"){
-            window.location.href = "pag/dashboard.html";
-        }else if(cuenta.rol === "user"){
-            window.location.href = "pag/tienda.html";
-        }
-    }else{
-        alert("Cuenta incorrecta");
-    }
-    });
-
-    </script>
+    <div class="menu">
+        <div class="logo">
+            <br><br>
+            <h1>Iniciar sesión</h1>
+        </div>
+        <div class="op">
+            <input type="text" id="user" placeholder="Ingrese el email del usuario">
+            <img src="/assets/core.png" class="core">
+            <input type="password" id="password" placeholder="Ingrese la contraseña">
+            <br><br>
+            <li><a href="pag/crear_user.html">¿No tienes una cuenta? Registrate</a></li>
+            <br>
+            <button id="iniciar">Iniciar</button>
+        </div>
+    </div>
+        <img src="/assets/left corner.png" class="corner_a">
+        <img src="/assets/right corner.png" class="corner_b">
+        <img src="/assets/botline.png" class="botline">
+        <img src="/assets/topline.png" class="topline">
+        <img src="/assets/left corner.png" class="corner_c">
+        <img src="/assets/right corner.png" class="corner_d">
+    <script src="/js/index.js"></script>
 </body>
 </html>

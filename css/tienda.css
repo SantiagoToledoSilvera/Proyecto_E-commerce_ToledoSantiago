@@ -1,0 +1,68 @@
+:root {
+    --background: black;
+    --radius-xl: 20px;
+    --text: #c9b570;
+    --fz-tx: 15px;
+    --fz-tl: 24px;
+    --font: Georgia, serif;
+    -glass: rgba(255, 255, 255, 0.1);
+}
+
+.productos{
+    display: grid;
+    grid-template-columns:
+    repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    padding: 40px;
+}
+
+.card{
+    background: var(--background);
+    border: 1px solid var(--text);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.card:hover{
+    transform: translateY(-10px);
+    box-shadow:
+    0 0 20px #d4af3750;
+}
+
+.card img{
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+}
+
+.hero{
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.contenidoModal{
+    background: var(--background);
+    padding: 30px;
+    border-radius: var(--radius-xl);
+    color: white;
+    width: 400px;
+}

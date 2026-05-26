@@ -1,0 +1,23 @@
+:root {
+    --background: black;
+    --radius-xl: 20px;
+    --text: #c9b570;
+    --fz-tx: 15px;
+    --fz-tl: 24px;
+    --font: Georgia, serif;
+    -glass: rgba(255, 255, 255, 0.1);
+}
+
+.pedidos{
+    display: grid;
+    gap: 20px;
+    padding: 30px;
+}
+
+.pedido{
+    border: 1px solid var(--text);
+    padding: 20px;
+    border-radius: var(--radius-xl);
+    background: var(--background);
+    color: white;
+}
