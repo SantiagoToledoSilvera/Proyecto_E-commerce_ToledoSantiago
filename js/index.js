@@ -20,6 +20,10 @@
         });
 
     if(cuenta){
+        localStorage.setItem(
+                "usuarioActivo",
+                JSON.stringify(cuenta)
+            );
         if(cuenta.rol === "admin"){
             window.location.href = "pag/dashboard.html";
         }else if(cuenta.rol === "user"){

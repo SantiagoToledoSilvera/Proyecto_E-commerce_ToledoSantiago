@@ -79,3 +79,40 @@ function mostrarCarrito(){
     .textContent =
     "Total: $" + total;
     }
+
+const btnComprar = document.getElementById("comprar");
+btnComprar.addEventListener("click", function(){
+    const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    const pedidos = JSON.parse(localStorage.getItem("pedidos")) || [];
+    const usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivo"));
+    let total = 0;
+    carrito.forEach(function(producto){
+        total += Number(producto.precio);
+    });
+    const pedido = {
+        usuario:
+        usuarioActivo.user,
+        dni:
+        document.getElementById("dni").value,
+        usuario:
+        usuarioActivo.user,
+        email:
+        usuarioActivo.email,
+        direccion:
+        document.getElementById("direccion").value,
+        telefono:
+        document.getElementById("telefono").value,
+        productos: carrito,
+        total: total,
+        fecha:
+        new Date().toLocaleString()
+    };
+    pedidos.push(pedido);
+    localStorage.setItem(
+        "pedidos",
+        JSON.stringify(pedidos)
+    );
+    localStorage.removeItem("carrito");
+    alert("Compra realizada");
+    location.reload();
+});
