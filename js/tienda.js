@@ -1,33 +1,48 @@
 const contenedor = document.querySelector(".productos");
 const productos = JSON.parse(localStorage.getItem("productos")) || [];
 
-productos.forEach(function(producto, index){
-    const card = document.createElement("div");
-    card.classList.add("card");
-    card.innerHTML = `
-        <img src="${producto.imagen}">
-        <h2>${producto.nombre}</h2>
-        <h3>$${producto.precio}</h3>
-        <p>${producto.descripcion}</p>
-        <a href="prod.html?id=${index}">
-            Ver producto
-        </a>
-        <button class="carrito">
-            Agregar al carrito
-        </button>
-    `;
-    contenedor.appendChild(card);
+function mostrarProductos(lista){
+    contenedor.innerHTML = "";
+    lista.forEach(function(producto, index){
+        const card = document.createElement("div");
+        card.classList.add("card");
+        card.innerHTML = `
+            <img src="${producto.imagen}">
+            <h2>${producto.nombre}</h2>
+            <h3>$${producto.precio}</h3>
+            <button class="carrito">
+                Agregar al carrito
+            </button><br><br>
+            <a href="prod.html?id=${index}">
+                Más detalles
+            </a>
+        `;
+        contenedor.appendChild(card);
 
-    const btnCarrito = card.querySelector(".carrito");
-    btnCarrito.addEventListener("click", function(){
-        const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-        carrito.push(producto);
-        localStorage.setItem(
-            "carrito",
-            JSON.stringify(carrito)
-        );
-        alert("Producto agregado");
+        const btnCarrito = card.querySelector(".carrito");
+        btnCarrito.addEventListener("click", function(){
+            const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+            carrito.push(producto);
+            localStorage.setItem(
+                "carrito",
+                JSON.stringify(carrito)
+            );
+            alert("Producto agregado");
+        });
     });
+}
+
+mostrarProductos(productos);
+
+const buscador = document.getElementById("busqueda");
+buscador.addEventListener("input", function(){
+    const texto = buscador.value.toLowerCase();
+    const filtrados = productos.filter(function(producto){
+        return producto.nombre
+        .toLowerCase()
+        .includes(texto);
+    });
+    mostrarProductos(filtrados);
 });
 
 const abrirCarrito = document.getElementById("abrirCarrito");
@@ -48,15 +63,16 @@ function mostrarCarrito(){
     let total = 0;
     carrito.forEach(function(producto){
         total += Number(producto.precio);
-        const div =
-        document.createElement("div");
+        const div = document.createElement("div");
+        div.classList.add("itemCarrito");
         div.innerHTML = `
             <img
             src="${producto.imagen}"
             width="50">
-            <p>${producto.nombre}</p>
-            <p>$${producto.precio}</p>
-            <hr>
+            <div class="infoCarrito">
+                <p>${producto.nombre}</p>
+                <p>$${producto.precio}</p>
+            </div>
             <button class="eliminar">
                 Eliminar
             </button>
