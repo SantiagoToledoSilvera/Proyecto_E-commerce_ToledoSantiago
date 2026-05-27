@@ -21,6 +21,8 @@ function agregarEventos(card) {
     });
     const btnEditar = card.querySelector(".editar");
 btnEditar.addEventListener("click", function() {
+    const nombreOriginal =
+        card.children[1].textContent;
     const nuevoNombre = prompt(
         "Editar nombre:",
         card.children[1].textContent
@@ -49,7 +51,22 @@ btnEditar.addEventListener("click", function() {
     nuevaDescripcion;
     card.children[4].textContent =
     nuevaCategoria;
-});
+
+    const productoEditado = productos.find(function(producto){
+    return producto.nombre === nombreOriginal;
+        });
+
+        productoEditado.nombre = nuevoNombre;
+        productoEditado.categoria = nuevaCategoria;
+        productoEditado.precio = nuevoPrecio;
+        productoEditado.imagen = nuevaImagen;
+        productoEditado.descripcion = nuevaDescripcion;
+
+        localStorage.setItem(
+            "productos",
+            JSON.stringify(productos)
+        );
+        });
 }
 productos.forEach(function(producto) {
     const card = document.createElement("div");
