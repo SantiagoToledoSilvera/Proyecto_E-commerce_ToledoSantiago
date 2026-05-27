@@ -132,3 +132,12 @@ btnComprar.addEventListener("click", function(){
     alert("Compra realizada");
     location.reload();
 });
+
+const logout = document.getElementById("logout");
+logout.addEventListener("click", function(){
+    localStorage.removeItem(
+        "usuarioActivo"
+    );
+    window.location.href =
+    "/index.html";
+});

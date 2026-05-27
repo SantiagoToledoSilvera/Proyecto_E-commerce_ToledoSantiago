@@ -107,14 +107,14 @@ button:hover {
 .flower_a {
     position: absolute;
     top: 50%;
-    width: 200px;
+    width: 13%;
     right: 0;
 }
 
 .flower_b {
     position: absolute;
     top: 50%;
-    width: 200px;
+    width: 13%;
     left: 0;
     transform: scalex(-1);
 }

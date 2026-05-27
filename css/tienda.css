@@ -224,6 +224,27 @@ input {
     margin-top: 20px;
 }
 
+.volverLogin{
+    position: fixed;
+    top: 100px;
+    right: 50px;
+    text-decoration: none;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--text);
+    color: var(--text);
+    padding: 12px 20px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    transition: 0.3s;
+    z-index: 999;
+}
+
+.volverLogin:hover{
+    background: var(--text);
+    color: black;
+    transform: translateY(-3px);
+}
+
 #busqueda{
     width: 350px;
     padding: 15px 20px;
