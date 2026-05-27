@@ -192,6 +192,68 @@ input {
     cursor: pointer;
 }
 
+.hero{
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    gap: 20px;
+}
+
+.hero h1{
+    font-size: 70px;
+    color: var(--text);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    text-shadow: 0 0 20px #d4af3760;
+}
+
+.hero p{
+    font-size: 18px;
+    color: white;
+    letter-spacing: 2px;
+}
+
+.buscadorContainer{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+#busqueda{
+    width: 350px;
+    padding: 15px 20px;
+    border-radius: 40px;
+    border: 1px solid var(--text);
+    background: rgba(255,255,255,0.05);
+    color: white;
+    outline: none;
+    font-size: 16px;
+    text-align: center;
+}
+
+#busqueda::placeholder{
+    color: #aaa;
+}
+
+.flower{
+    width: 60px;
+    opacity: 0.8;
+}
+
+.a{
+    transform: scaleX(-1);
+}
+
+.core {
+    display: flex;
+    width: 100px;
+}
+
 .corner_a {
     position: fixed;
     bottom: 0;

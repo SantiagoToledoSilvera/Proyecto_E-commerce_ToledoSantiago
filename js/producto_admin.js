@@ -55,7 +55,6 @@ btnEditar.addEventListener("click", function() {
     const productoEditado = productos.find(function(producto){
     return producto.nombre === nombreOriginal;
         });
-
         productoEditado.nombre = nuevoNombre;
         productoEditado.categoria = nuevaCategoria;
         productoEditado.precio = nuevoPrecio;
