@@ -18,4 +18,89 @@
 body {
     background: var(--background);
     font-family: var(--font);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+th {
+    padding: 10px;
+    border: 1px solid var(--text);
+}
+
+td {
+    padding: 3px;
+}
+
+input {
+    width: 300px;
+    margin: 10px 0; 
+    gap: 15px;
+    background-color: var(--background);
+    border-radius: var(--radius-xl);
+    padding: 15px;
+    border: 1px solid var(--text);
+    color: var(--text);
+    outline: none;
+}
+
+button {
+    background-color: var(--text);
+    color: var(--background);
+    border-radius: var(--radius-xl);
+    padding: 10px;
+    border: none;
+    outline: none;
+}
+
+button:hover {
+    transform: translateX(5px);
+    cursor: pointer;
+}
+
+.corner_a {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 150px;
+}
+
+.corner_b {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 150px;
+}
+
+.botline {
+    position: fixed;
+    bottom: 0;
+    width: 200px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.corner_c {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 150px;
+    transform: scaley(-1);
+}
+
+.corner_d {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 150px;
+    transform: scaley(-1);
+}
+
+.topline {
+    position: absolute;
+    top: 0;
+    width: 200px;
+    left: 50%;
+    transform: translateX(-50%);
 }

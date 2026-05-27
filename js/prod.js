@@ -12,3 +12,15 @@ document.getElementById("precioProducto").textContent =
 "$" + producto.precio;
 document.getElementById("descProducto").textContent =
 producto.descripcion;
+
+const btnCarrito = document.getElementById("agregarCarrito");
+btnCarrito.addEventListener("click", function(){
+    const carrito =
+    JSON.parse(localStorage.getItem("carrito")) || [];
+    carrito.push(producto);
+    localStorage.setItem(
+        "carrito",
+        JSON.stringify(carrito)
+    );
+    alert("Producto agregado al carrito");
+});

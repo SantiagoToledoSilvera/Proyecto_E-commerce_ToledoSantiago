@@ -8,12 +8,26 @@
     -glass: rgba(255, 255, 255, 0.1);
 }
 
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: var(--background);
+    font-family: var(--font);
+    color: white;
+    min-height: 100vh;
+}
+
 .productos{
     display: grid;
     grid-template-columns:
     repeat(auto-fit, minmax(250px, 1fr));
-    gap: 40px;
+    gap: 30px;
     padding: 40px;
+    width: 100%;
 }
 
 .card{
@@ -22,6 +36,8 @@
     border-radius: var(--radius-xl);
     overflow: hidden;
     transition: 0.3s;
+    padding: 20px;
+    color: white;
 }
 
 .card:hover{
@@ -34,6 +50,21 @@
     width: 100%;
     height: 350px;
     object-fit: cover;
+}
+
+.card h2{
+    margin-top: 15px;
+    color: white;
+}
+
+.card h3{
+    color: var(--text);
+    margin: 10px 0;
+}
+
+.card p{
+    font-size: var(--fz-tx);
+    margin-bottom: 15px;
 }
 
 .hero{
@@ -61,8 +92,237 @@
 
 .contenidoModal{
     background: var(--background);
-    padding: 30px;
+    padding: 20px;
     border-radius: var(--radius-xl);
     color: white;
     width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--text);
+    border: 0.5px solid var(--text);
+    border-radius: var(--radius-xl);
+    padding: 2px;
+}
+
+a:hover {
+    cursor: pointer;
+    background-color: var(--text);
+    color: var(--background);
+}
+
+button{
+    background-color: var(--text);
+    color: var(--background);
+    border-radius: var(--radius-xl);
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: var(--background);
+    color: var(--text);
+    border: 0.5px solid var(--text);
+}
+
+input {
+    width: 250px;
+    background-color: var(--background);
+    border-radius: var(--radius-xl);
+    padding: 15px;
+    border: 1px solid var(--text);
+    color: var(--text);
+    outline: none;
+}
+
+#abrirCarrito{
+    position: fixed;
+    top: 50px;
+    right: 50px;
+    z-index: 1000;
+}
+
+.buscador{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+#busqueda{
+    width: 300px;
+    padding: 15px;
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--text);
+    background: var(--background);
+    color: white;
+    outline: none;
+}
+
+.itemCarrito{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+}
+
+.infoCarrito{
+    flex: 1;
+}
+
+.itemCarrito img{
+    border-radius: 10px;
+}
+
+.eliminar{
+    background: orange;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.hero{
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    gap: 20px;
+}
+
+.hero h1{
+    font-size: 70px;
+    color: var(--text);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    text-shadow: 0 0 20px #d4af3760;
+}
+
+.hero p{
+    font-size: 18px;
+    color: white;
+    letter-spacing: 2px;
+}
+
+.buscadorContainer{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.volverLogin{
+    position: fixed;
+    top: 100px;
+    right: 50px;
+    text-decoration: none;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--text);
+    color: var(--text);
+    padding: 12px 20px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    transition: 0.3s;
+    z-index: 999;
+}
+
+.volverLogin:hover{
+    background: var(--text);
+    color: black;
+    transform: translateY(-3px);
+}
+
+#busqueda{
+    width: 350px;
+    padding: 15px 20px;
+    border-radius: 40px;
+    border: 1px solid var(--text);
+    background: rgba(255,255,255,0.05);
+    color: white;
+    outline: none;
+    font-size: 16px;
+    text-align: center;
+}
+
+#busqueda::placeholder{
+    color: #aaa;
+}
+
+.flower{
+    width: 60px;
+    opacity: 0.8;
+}
+
+.a{
+    transform: scaleX(-1);
+}
+
+.core {
+    display: flex;
+    width: 100px;
+}
+
+.corner_a {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 150px;
+    pointer-events: none;
+}
+
+.corner_b {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 150px;
+    pointer-events: none;
+}
+
+.botline {
+    position: fixed;
+    bottom: 0;
+    width: 200px;
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
+}
+
+.corner_c {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 150px;
+    transform: scaley(-1);
+    pointer-events: none;
+}
+
+.corner_d {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 150px;
+    transform: scaley(-1);
+    pointer-events: none;
+}
+
+.topline {
+    position: absolute;
+    top: 0;
+    width: 200px;
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
 }
